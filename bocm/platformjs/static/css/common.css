@@ -1,0 +1,99 @@
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+  line-height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+  -webkit-appearance: none;
+}
+
+textarea {
+  -webkit-appearance: none;
+}
+.cen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%) ;
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed{
+  position: fixed;
+}
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+.font26{
+  font-size: .26rem;
+}
+.font28{
+  font-size: .28rem;
+}
+.font30{
+  font-size: .3rem;
+}
+.font32{
+  font-size: .32rem;
+}
+.font34{
+  font-size: .34rem;
+}
+.color666{
+  color:#666;
+}
+.bg-f{
+  background: #fff;
+}
+
+.no-enter {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.bg_gt{
+  width:.15rem;
+  height:.26rem;
+  background: url(../image/ap27.png) center right no-repeat;
+  background-size: .15rem .26rem;
+}
+.pl2{
+  padding-left:.2rem;
+}
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .4);
+}

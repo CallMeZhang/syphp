@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>一起善源</title>
+    <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+        eruda.init();
+    </script> -->
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .loading_container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+        
+        .box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .wai {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: rotate 2s linear infinite;
+            transform-origin: center center;
+            z-index: 12;
+            background: url("data:image/png;base64,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") no-repeat center;
+            background-size: contain;
+        }
+        
+        .nei {
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABGdBTUEAALGPC/xhBQAAArxJREFUSA3FU01IVFEUPufecfxpfC2SjKwoiKCNtGmbNpYEtcmciiJrFUG6GltEG4na9QNBuyARBoQZXUU/Rv6tUoIQQ6FFtZIoCGaaUXR893TOszfz3nOcESG68N499zvf+c49954L8I8HBvVzLReO2rR6nhBOsLMKCLKENBKu1s9rR5JfhU99fSo3MXvSNnSN/YeYF2H+FwXqZaQGE/gm+cvVLSSgWCz8+4e5B0S9BFDAPcQFa3K4Sdbp47HTYNsvXJ935sAFpVVXZCz1TnAlP9kRiw8R0a1S4sLZ7OD43cY2bzMtsbMS4yTIjn26weJnNitSiSebJDL9mbauHYqFkcDcLhWEiONa4yldVb2rvlEfdDlWA7y2tjdsQ4WHlcJuBPzp+oozWbiau4nZtnPNdp5mio41CxEGrInhq0G81Hqx9fKeVVr6SAQNAf90yBg8wLfgw3nndn1dTY+A6ZaOK5xM+wieBSHO140lptKtnfeBzGOPSzplf4gMrHjBv/YcvkpkxEbCZ3yM4RIcF3rKxhSAfg9gXGxtRsyrMIbm/SjXQ7QUxCqtNcK6GAKaU7Xjg98A8UMlga34FWDKaVPulDtbESgXw+f/ObJT9TsJIqOpEa7ibiEAsdG1ucxlvuQNPwWUd7hoF2JYK40aOzCZXOFExZFp7XxAxsQF0aCbI5PJ2aK3vMXd9oSbsUfEq7RqrxtNTkuEU4Ebao2nelGph7I2YAYX2y/udX3l5uyxjkv8WruD4hLjq8AVKVSCmGNCgl/qDO/ue/1kalg4i9FYU962o4pwHx9hlF9RtJS4cEPyCw6phJPwuzFxDr7OIrKTBeY5CfIERxgaMPxzRuBYvHq+I/I6vMflxdfZZcSFu2ECcVZMUkG8YoJCEsRHYvvGJsSFX7YCV9CaGIrzJTrdJRh3jK8VXd5/mf8ArQYObwot/v4AAAAASUVORK5CYII=") no-repeat center;
+            z-index: 11;
+            background-size: contain;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg)
+            }
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+        
+        @media only screen and (max-width: 320px) {
+            html {
+                font-size: 42.66px;
+            }
+        }
+        
+        @media only screen and (min-width: 321px) and (max-width: 352px) {
+            html {
+                font-size: 46px;
+            }
+        }
+        
+        @media only screen and (min-width: 353px) and (max-width: 370px) {
+            html {
+                font-size: 48px;
+            }
+        }
+        
+        @media only screen and (min-width: 371px) and (max-width: 380px) {
+            html {
+                font-size: 50px;
+            }
+        }
+        
+        @media only screen and (min-width: 381px) and (max-width: 390px) {
+            html {
+                font-size: 52px;
+            }
+        }
+        
+        @media only screen and (min-width: 391px) and (max-width: 400px) {
+            html {
+                font-size: 53px;
+            }
+        }
+        
+        @media only screen and (min-width: 401px) and (max-width: 410px) {
+            html {
+                font-size: 54px;
+            }
+        }
+        
+        @media only screen and (min-width: 411px) and (max-width: 413px) {
+            html {
+                font-size: 54.8px;
+            }
+        }
+        
+        @media only screen and (min-width: 414px) and (max-width: 420px) {
+            html {
+                font-size: 55.2px;
+            }
+        }
+        
+        @media only screen and ( min-width:421px) and ( max-width:440px) {
+            html {
+                font-size: 58px;
+            }
+        }
+        
+        @media only screen and ( min-width:441px) and ( max-width:699px) {
+            html {
+                font-size: 58px;
+            }
+        }
+        
+        @media only screen and ( min-width:700px) and (max-width: 768px) {
+            html {
+                font-size: 102.4px;
+            }
+        }
+        
+        @media only screen and ( min-width:769px) and (max-width: 800px) {
+            html {
+                font-size: 106.667px;
+            }
+        }
+        
+        @media only screen and ( min-width:801px) and (max-width: 1024px) {
+            html {
+                font-size: 136.533px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="loading_container">
+            <div class="box">
+                <div class="wai">
+                </div>
+                <div class="nei">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display:none">
+        <div id="pts"></div>
+        <div id="pageid"></div>
+        <div id="uuid"></div>
+    </div>
+    <!-- built files will be auto injected -->
+</body>
+<script type="text/javascript" src="<?php echo RESOURCE_SY_JSAPI_URL?>/app-jsapi.js"></script>
+<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL?>/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+    ! function(a, b) {
+        function c() {
+            var b = f.getBoundingClientRect().width;
+            b / i > 1024 && (b = 1024 * i);
+            var c = b / 7.5;
+            f.style.fontSize = c + "px", k.rem = a.rem = c
+        }
+
+        var d, e = a.document,
+            f = e.documentElement,
+            g = e.querySelector('meta[name="viewport"]'),
+            h = e.querySelector('meta[name="flexible"]'),
+            i = 0,
+            j = 0,
+            k = b.flexible || (b.flexible = {});
+        if (g) {
+            var l = g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+            l && (j = parseFloat(l[1]), i = parseInt(1 / j))
+        } else if (h) {
+            var m = h.getAttribute("content");
+            if (m) {
+                var n = m.match(/initial\-dpr=([\d\.]+)/),
+                    o = m.match(/maximum\-dpr=([\d\.]+)/);
+                n && (i = parseFloat(n[1]), j = parseFloat((1 / i).toFixed(2))), o && (i = parseFloat(o[1]), j = parseFloat((1 / i).toFixed(2)))
+            }
+        }
+        if (!i && !j) {
+            var p = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+                q = a.devicePixelRatio;
+            i = p ? q >= 3 && (!i || i >= 3) ? 3 : q >= 2 && (!i || i >= 2) ? 2 : 1 : 1, j = 1 / i
+        }
+        if (f.setAttribute("data-dpr", i), !g)
+            if (g = e.createElement("meta"), g.setAttribute("name", "viewport"), g.setAttribute("content", "initial-scale=" + j + ", maximum-scale=" + j + ", minimum-scale=" + j + ", user-scalable=no"), f.firstElementChild) f.firstElementChild.appendChild(g);
+            else {
+                var r = e.createElement("div");
+                r.appendChild(g), e.write(r.innerHTML)
+            }
+        a.addEventListener("resize", function() {
+            clearTimeout(d), d = setTimeout(c, 300)
+        }, !1), a.addEventListener("pageshow", function(a) {
+            a.persisted && (clearTimeout(d), d = setTimeout(c, 300))
+        }, !1), "complete" === e.readyState ? e.body.style.fontSize = 12 * i + "px" : e.addEventListener("DOMContentLoaded", function(a) {
+            e.body.style.fontSize = 12 * i + "px"
+        }, !1), c(), k.dpr = a.dpr = i, k.refreshRem = c, k.rem2px = function(a) {
+            var b = parseFloat(a) * this.rem;
+            return "string" == typeof a && a.match(/rem$/) && (b += "px"), b
+        }, k.px2rem = function(a) {
+            var b = parseFloat(a) / this.rem;
+            return "string" == typeof a && a.match(/px$/) && (b += "rem"), b
+        }
+    }(window, window.lib || (window.lib = {}));
+
+    function refresh_current_page() {
+        window.location.reload();
+    }
+
+    function goBackOfDetail() {
+        syJsbGetCurrentPage(function(currentPage) {
+            if (currentPage != 'main' && currentPage != 'nonsupport') {
+                syJsbCloseAppPage();
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        navigator.sayswho = (function() {
+            var ua = navigator.userAgent,
+                tem,
+                M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+            if (/trident/i.test(M[1])) {
+                tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+                return 'IE ' + (tem[1] || '');
+            }
+            if (M[1] === 'Chrome') {
+                tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+                if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            }
+            M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+            if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+            return M.join(' ');
+        })();
+
+        //var pathname = encodeURIComponent(window.location.pathname);
+        var title = document.title;
+        var url = encodeURIComponent(window.location.href);
+        var width = $(window).width();
+        var height = $(window).height();
+        // other
+        var page_ts = $.now() / 1000;
+        //var pageid = $("#pageid").html();
+        var uuid = localStorage.getItem('statistics_uuid');
+        if (!uuid) {
+            uuid = "sys" + guid();
+            localStorage.setItem('statistics_uuid', uuid)
+        }
+        $("#pts").text(page_ts);
+        var $req_url = 'https://d1.17shanyuan.com';
+        if (window.location.origin !== 'https://www.17shanyuan.com') {
+            $req_url = 'http://dt1.17shanyuan.com';
+        }
+        $.ajax({
+            type: "GET",
+            url: $req_url + "/greeting/pageview?url=" + url + "&title=" + title +
+                "&page_ts=" + page_ts + "&browser=" + navigator.sayswho + "&width=" +
+                width + "&height=" + height + "&uuid=" + uuid,
+            cache: false,
+            success: function(data) {
+                console.log(data)
+            },
+            error: function(data) {
+                console.log(data)
+            }
+        });
+    })
+
+    function S4() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+
+    function guid() {
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    }
+</script>
+<!--<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=IQ4BZ-DO536-5X6SB-M5SH3-VNQGQ-HNBCG"></script>-->
+<!--<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>-->
+
+</html>

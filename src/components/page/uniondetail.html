@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>联盟详情页</title>
+  <link rel="stylesheet" href="../../../static/css/reset.css">
+  <link rel="stylesheet" href="../../../static/css/common.css">
+  <link rel="stylesheet" href="../../../static/css/global.css">
+  <style>
+    /*banner*/
+    .banner {
+      width: 100%;
+    }
+
+    .banner img {
+      width: 100%;
+      min-height: 2rem;
+    }
+
+    /*运行成果*/
+    .achievements {
+      width: 100%;
+      margin-top: 0.2rem;
+      background-color: #fff;
+    }
+
+    /*title*/
+    .achiTit {
+      width: 100%;
+      padding: 0.53rem 0 0.28rem 0;
+      border-bottom: 1px solid #DDD;
+    }
+
+    .achiTit .line {
+      float: left;
+      width: 0.16rem;
+      height: 0.7rem;
+      background-color: #F13E52;
+    }
+
+    .achiTit .title {
+      float: left;
+      margin-left: 0.14rem;
+      text-align: left;
+    }
+
+    .achiTit .title h2 {
+      font-size: 0.34rem;
+      color: #606060;
+      /*font-weight: 600;*/
+    }
+
+    .achiTit .title p {
+      padding-top: 0.14rem;
+      font-size: 0.24rem;
+      color: #B1B1B1;
+    }
+
+    /*number*/
+    .achiNum {
+      padding-left: 0.3rem;
+    }
+
+    .achiNum ul {
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid #DDD;
+    }
+
+    .achiNum li {
+      float: left;
+      width: 33.3%;
+      text-align: left;
+      margin-top: 0.25rem;
+    }
+
+    .achiNum li p {
+      font-size: 0.22rem;
+      color: #999;
+      padding-bottom: 0.15rem;
+    }
+
+    .achiNum li .red {
+      color: #F13E52;
+      font-size: 0.32rem;
+      font-weight: 600;
+    }
+
+    .achiNum li h2 {
+      font-size: 0.26rem;
+      color: #606060;
+    }
+
+    /*content*/
+    .achiContent {
+      position: relative;
+      padding: 0 0.3rem;
+      overflow: hidden;
+      height: 1.2rem;
+    }
+
+    .mark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1.2rem;
+      background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+    }
+
+    .achiContent .achiCont p {
+      font-size: 0.28rem;
+      color: #606060;
+      line-height: 0.5rem;
+      text-align: left;
+      margin-top: 0.25rem;
+    }
+
+    .achiContent .achiCont .achiConImg {
+      margin-top: 0.25rem;
+    }
+
+    .achiContent .achiCont .achiConImg div {
+      position: relative;
+      height: 2.2rem;
+      background-color: #F2F2F2;
+      border-radius: 8px;
+    }
+
+    .achiContent .achiCont .achiConImg div img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+      min-height: 2.2rem;
+      border-radius: 8px;
+    }
+
+    .achiContent .achiCont .achiConImg .img1 {
+      width: 3rem;
+    }
+
+    .achiContent .achiCont .achiConImg .img2 {
+      width: 3.8rem;
+    }
+
+    .achiContent .achiCont .achiConImg .img3 {
+      width: 6.9rem;
+      height: 3.4rem;
+    }
+
+    .achiContent .achiCont .achiConImg .img3 img {
+      min-height: 3.4rem;
+    }
+
+    .achiStop, .achiOpen {
+      position: relative;
+      width: 100%;
+      height: 0.93rem;
+      line-height: 0.93rem;
+      font-size: 0.26rem;
+      color: #979797;
+      text-align: center;
+    }
+
+    .achiStop img,
+    .achiOpen img {
+      width: 0.4rem;
+      height: 0.22rem;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.11rem;
+      margin-left: 0.06rem;
+    }
+
+    /*明星产品*/
+    .startProduct {
+      width: 100%;
+      margin-top: 0.2rem;
+      background-color: #fff;
+    }
+
+    .startProduct .startPro {
+      padding: 0 0.3rem 0.34rem 0.3rem;
+    }
+
+    .startPro .proCont li {
+      width: 49%;
+      float: left;
+      margin-top: 0.33rem;
+      text-align: left;
+    }
+
+    .startPro .proCont li:nth-child(2n) {
+      float: right;
+    }
+
+    .startPro .proCont li .proImg {
+      position: relative;
+      width: 3.4rem;
+      height: 2.2rem;
+      border-radius: 8px;
+      background-color: #F2F2F2;
+    }
+
+    .startPro .proCont li .proImg img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+      min-height: 2.2rem;
+      border-radius: 8px;
+    }
+
+    .startPro .proCont li h2 {
+      width: 80%;
+      font-size: 0.26rem;
+      color: #606060;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 0.5rem;
+    }
+
+    .startPro .proCont li p {
+      font-size: 0.24rem;
+      color: #999;
+    }
+
+    .startPro .proCont li p span {
+      color: #f13e52;
+    }
+
+    /*最活跃*/
+    .actives {
+      margin-top: 0.2rem;
+      background-color: #fff;
+    }
+
+    .actives .activeContent {
+      /*padding: 0 0.3rem 0.36rem 0.32rem;*/
+    }
+
+    .actives .activeCon {
+      padding: 0 0.3rem 0.45rem 0.32rem;
+    }
+
+    .activeCon li {
+      margin-top: 0.3rem;
+      text-align: left;
+    }
+
+    .activeCon .tit {
+      font-size: 0.26rem;
+      color: #999;
+    }
+
+    .activeCon .tit .red {
+      color: #f13e52;
+    }
+
+    .activeCon .tit span:first-child {
+      font-weight: 600;
+      margin-right: 0.23rem;
+    }
+
+    .activeCon .tit span:nth-child(2) {
+      display: inline-block;
+      width: 60%;
+      font-size: 0.24rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+
+    .activeCon .tit span:nth-child(4) {
+      display: inline-block;
+      width: 18%;
+      text-align: right;
+    }
+
+    .redLine {
+      width: 90%;
+      height: 0.1rem;
+      margin-top: 0.15rem;
+      margin-left: 0.5rem;
+      border-radius: 0.1rem;
+    }
+
+    .redLine p {
+      width: 50%;
+      height: 100%;
+      border: 1px solid #f13e52;
+      background: rgba(241, 62, 82, 0.6);
+      border-radius: 0.1rem;
+    }
+
+    .activeCon li:nth-child(1) .redLine p,
+    .activeCon li:nth-child(2) .redLine p,
+    .activeCon li:nth-child(3) .redLine p {
+      background-color: #f13e52;
+    }
+
+    .activeFoo {
+      /*margin-top: 0.45rem;*/
+      text-align: center;
+      font-size: 0.22rem;
+      color: #B1B1B1;
+      padding-bottom: 0.36rem;
+    }
+
+    .activeFoo .line {
+      display: inline-block;
+      height: 0.02rem;
+      width: 0.5rem;
+      vertical-align: middle;
+      background-color: #B1B1B1;
+    }
+
+    .activeFoo p {
+      display: inline-block;
+    }
+
+    .activeFoo .gray {
+      color: #3f3f3f;
+    }
+  </style>
+</head>
+<body>
+<div class="uniondetail">
+  <!--banner-->
+  <div class="banner">
+    <a><img src="../../assets/images/banner/banner2.png" alt="banner正在加载..."></a>
+  </div>
+  <!--运行成果-->
+  <div class="achievements">
+    <div class="achiTit">
+      <div class="achiTitCon clearfix">
+        <div class="line"></div>
+        <div class="title">
+          <h2>运行成果</h2>
+          <p class="time">更新于8月12日24：00</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="achiNum">
+      <ul class="clearfix">
+        <li>
+          <p><span class="red">105</span>位</p>
+          <h2>助理人上线</h2>
+        </li>
+        <li>
+          <p><span class="red">105</span>位</p>
+          <h2>贫困户上线</h2>
+        </li>
+        <li>
+          <p><span class="red">105</span>件</p>
+          <h2>爱心产品上线</h2>
+        </li>
+        <li>
+          <p><span class="red">5,678,234</span>次</p>
+          <h2>爱心购买</h2>
+        </li>
+        <li>
+          <p><span class="red">58,234</span>元</p>
+          <h2>贫困户增收</h2>
+        </li>
+        <li>
+          <p><span class="red">78,1235</span>人</p>
+          <h2>贫困人口受益</h2>
+        </li>
+      </ul>
+    </div>
+    <div class="achiContent">
+      <div class="mark"></div>
+      <div class="achiCont">
+        <p>商州区，是陕西省商洛市辖区的建制。其前身是商州市，商县，商周，洛州，上洛侯国，上洛县，上雒，上鄀，鄀方。其政府，治所所在的地方分别在今州城和商州古上洛(寒川佛诞公园孝义古城村)。</p>
+        <div class="achiConImg clearfix">
+          <div class="fl img1"><img src="../../assets/images/banner/banner1.jpg" alt="img"></div>
+          <div class="fr img2"><img src="../../assets/images/banner/banner1.jpg" alt="img"></div>
+        </div>
+        <p>商州区，是陕西省商洛市辖区的建制。其前身是商州市，商县，商周，洛州，上洛侯国，上洛县，上雒，上鄀，鄀方。其政府，治所所在的地方分别在今州城和商州古上洛(寒川佛诞公园孝义古城村)。</p>
+        <div class="achiConImg">
+          <div class="img3"><img src="../../assets/images/banner/banner1.jpg" alt="img"></div>
+        </div>
+      </div>
+    </div>
+    <div class="achiStop" style="display:none">收起 <img src="../../assets/images/icon/icon-arow.png" alt="箭头"></div>
+    <div class="achiOpen">展开 <img src="../../assets/images/icon/icon-arow2.png" alt="箭头"></div>
+  </div>
+  <!--明星产品-->
+  <div class="startProduct">
+    <div class="achiTit">
+      <div class="achiTitCon clearfix">
+        <div class="line"></div>
+        <div class="title">
+          <h2>明星产品</h2>
+          <p class="time">昨日最受欢迎的产品前三甲</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="startPro">
+      <div class="proCont">
+        <ul class="clearfix">
+          <li>
+            <div class="proImg">
+              <img src="../../assets/images/banner/banner1.jpg" alt="img">
+            </div>
+            <h2>真正手工空心挂面真正手工空心挂面真正手工空心挂面</h2>
+            <p>昨日获得<span>115</span>次帮扶</p>
+          </li>
+          <li>
+            <div class="proImg">
+              <img src="../../assets/images/banner/banner1.jpg" alt="img">
+            </div>
+            <h2>真正手工空心挂面真正手工空心挂面真正手工空心挂面</h2>
+            <p>昨日获得<span>115</span>次帮扶</p>
+          </li>
+          <li>
+            <div class="proImg">
+              <img src="../../assets/images/banner/banner1.jpg" alt="img">
+            </div>
+            <h2>真正手工空心挂面真正手工空心挂面真正手工空心挂面</h2>
+            <p>昨日获得<span>115</span>次帮扶</p>
+          </li>
+          <li>
+            <div class="proImg">
+              <img src="../../assets/images/banner/banner1.jpg" alt="img">
+            </div>
+            <h2>真正手工空心挂面真正手工空心挂面真正手工空心挂面</h2>
+            <p>昨日获得<span>115</span>次帮扶</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--最活跃-->
+  <div class="actives">
+    <div class="achiTit">
+      <div class="achiTitCon clearfix">
+        <div class="line"></div>
+        <div class="title">
+          <h2>员工最活跃</h2>
+          <p class="time">过去7天，新增注册人数最多的单位</p>
+        </div>
+      </div>
+    </div>
+    <div class="activeContent">
+      <div class="activeCon">
+        <ul id="actUlOne"></ul>
+      </div>
+      <div class="activeFoo">
+        <span class="line"></span>
+        <p>公益陕西共<span class="gray">342</span>个单位，累计注册<span class="gray">239,142</span>人</p>
+        <span class="line"></span>
+      </div>
+    </div>
+  </div>
+  <!--最有爱-->
+  <div class="actives">
+    <div class="achiTit">
+      <div class="achiTitCon clearfix">
+        <div class="line"></div>
+        <div class="title">
+          <h2>员工最有爱</h2>
+          <p class="time">过去7天，人均公益消费最多的单位（含单位采集）</p>
+        </div>
+      </div>
+    </div>
+    <div class="activeContent">
+      <div class="activeCon">
+        <ul id="actUlTwo"></ul>
+      </div>
+      <div class="activeFoo">
+        <span class="line"></span>
+        <p>公益陕西共累计帮扶金额￥<span class="gray">12,239,142.00</span></p>
+        <span class="line"></span>
+      </div>
+    </div>
+  </div>
+  <!--员工最热心-->
+  <div class="actives">
+    <div class="achiTit">
+      <div class="achiTitCon clearfix">
+        <div class="line"></div>
+        <div class="title">
+          <h2>员工最热心</h2>
+          <p class="time">过去7天，益客注册最多的单位</p>
+        </div>
+      </div>
+    </div>
+    <div class="activeContent">
+      <div class="activeCon">
+        <ul id="actUlThree"></ul>
+      </div>
+      <div class="activeFoo">
+        <span class="line"></span>
+        <p>公益陕西共累计邀请益客<span class="gray">436</span>人</p>
+        <span class="line"></span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script>
+  var mark = document.getElementsByClassName('mark')[0]
+  var achiContent = document.getElementsByClassName('achiContent')[0]
+  var achiStop = document.getElementsByClassName('achiStop')[0]
+  var achiOpen = document.getElementsByClassName('achiOpen')[0]
+  achiOpen.onclick = function () {
+    mark.style.display = 'none'
+    achiContent.style.height = 'auto'
+    achiContent.style.overflow = 'hidden'
+    achiStop.style.display = 'block'
+    achiOpen.style.display = 'none'
+  }
+  achiStop.onclick = function () {
+    mark.style.display = 'block'
+    achiContent.style.height = '1.2rem'
+    achiContent.style.overflow = 'hidden'
+    achiStop.style.display = 'none'
+    achiOpen.style.display = 'block'
+  }
+
+  var actUlOne = document.getElementById('actUlOne')
+  var actUlTwo = document.getElementById('actUlTwo')
+  var actUlThree = document.getElementById('actUlThree')
+  var textArr1 = [758.89, 700, 680, 650, 550, 500, 450, 400, 100, 70]
+  var strArr1 = ['123','中看看','sdf','dff','fsdf','sdf','sdfd','sdf','sdf','sdf']
+  var textArr2 = [5514, 5500, 4500, 4000, 3550, 2500, 1450, 1400, 1000, 170]
+  var textArr3 = [5514, 5500, 4500, 4000, 3550, 2500, 1450, 1400, 1000, 170]
+  function progressBar (name, arr, strArr) {
+    var asArr = []
+    var asName = strArr
+    for (var i = 0; i < 10; i++) {
+      var a = (i + 1) < 10 ? '0' + (i + 1) : (i + 1)
+      //      获取数组中的最大值
+      var c = Math.max.apply(null, arr)
+      //      计算p标签的宽的百分比
+      var d = arr[i] / c * 100 + '%'
+      var as = '<li>' +
+        '<div class="tit clearfix">' +
+        '<span class="red fl">' + a + '</span>' +
+        '<span class="fl">'+asName[i] + '</span>' +
+        '<span class="fr">人</span>' +
+        '<span class="red fr">' + arr[i] + '</span>' +
+        '</div>' +
+        '<div class="redLine">' +
+        '<p class="p" style="width:' + d + '"></p>' +
+        '</div>' +
+        '</li>'
+      asArr.push(as)
+    }
+    name.innerHTML = asArr.join('')
+  }
+//  progressBar(actUlOne, textArr2)
+  progressBar(actUlTwo, textArr1, strArr1)
+//  progressBar(actUlThree, textArr3)
+</script>
